@@ -1,0 +1,12 @@
+.page-background {
+  background-image: url('/bg3.jpg'); /* public folder image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.bg-white {
+  background: rgba(255, 255, 255, 0.95);
+}

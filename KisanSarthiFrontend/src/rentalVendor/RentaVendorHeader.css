@@ -1,0 +1,21 @@
+.agri-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.agri-navbar {
+  background: linear-gradient(90deg, #2e7d32, #43a047); /* subtle green gradient */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffd54f !important; /* yellow on hover */
+}
+
+.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #2e7d32;
+  font-weight: bold;
+}

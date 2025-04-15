@@ -1,0 +1,1 @@
+// vendorService.js content

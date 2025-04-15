@@ -1,0 +1,77 @@
+/* 📌 Footer Styles */
+.footer {
+    background-color: #2E7D32; /* Dark Green */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+  
+  /* 📌 Left Section - Logo */
+  .footer-logo h2 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .footer-logo p {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* 📌 Center Section - Links */
+  .footer-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer-links a:hover {
+    color: #FFD600;
+  }
+  
+  /* 📌 Right Section - Social Icons */
+  .footer-social a {
+    color: white;
+    font-size: 18px;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  
+  .footer-social a:hover {
+    color: #FFD600;
+  }
+  
+  /* 📌 Bottom Section */
+  .footer-bottom {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* 📌 Responsive */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+  }
+  
