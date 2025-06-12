@@ -7,7 +7,7 @@ import {
   UpdateProfile,
   DeleteProfile,
   VerifyOtp,
-} from "../controllers/showroomVendorController.js";
+} from "../../controllers/showroomVendorController.js";
 
 import {
   AddNewMachine,
@@ -15,9 +15,9 @@ import {
   UpdateNewMachine,
   DeleteNewMachine,
   GetAllNewMachine,
-} from "../controllers/sellNewMachineController.js";
+} from "../../controllers/sellNewMachineController.js";
 
-import uploadNewMachine from "../middleware/newMachineUpload.js";
+import uploadNewMachine from "../../middleware/newMachineUpload.js";
 
 const router = express.Router();
 

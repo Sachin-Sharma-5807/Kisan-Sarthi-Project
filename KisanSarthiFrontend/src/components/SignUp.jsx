@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/Signup.css";
+import "../styles/SignUp.css";
 
 function Signup() {
   const nameInput = useRef();
@@ -48,9 +48,9 @@ function Signup() {
     const userData = {
       FullName: nameInput.current.value.trim(),
       Email: emailInput.current.value.trim(),
-      PhoneNumber: phone.trim(),
+      PhoneNumber: phone.trim(), // ✅ Corrected
       Password: password.trim(),
-      Address: addressInput.current.value.trim(),
+      Address: addressInput.current.value.trim(), // ✅ Corrected
       UserType: userTypeInput.current.value,
     };
 
@@ -74,28 +74,16 @@ function Signup() {
     }
 
     try {
-      const apiUrls = {
-        Admin: "http://localhost:3000/admin/register",
-        "Showroom Vendor":
-          "http://localhost:3000/vendor/showroom-vendor/register",
-        "Rental Vendor": "http://localhost:3000/vendor/rental-vendor/register",
-        User: "http://localhost:3000/user/register",
-      };
-
-      const apiUrl = apiUrls[userData.UserType];
-      if (!apiUrl) throw new Error("Invalid user type");
-
+      const apiUrl = "http://localhost:8000/api/user/register";
       await axios.post(apiUrl, userData);
-      toast.success("Please fill the otp!", { theme: "colored" });
 
-      // Pass the userType via the state parameter
-      setTimeout(
-        () =>
-          navigate(`/VerifyOtp/${userData.Email}`, {
-            state: { userType: userData.UserType },
-          }),
-        2000
-      );
+      toast.success("Please fill the OTP!", { theme: "colored" });
+
+      setTimeout(() => {
+        navigate(`/VerifyOtp/${userData.Email}`, {
+          state: { userType: userData.UserType },
+        });
+      }, 2000);
     } catch (error) {
       console.error("Signup error:", error.response?.data || error.message);
       toast.error(error.response?.data?.message || "Signup failed!", {

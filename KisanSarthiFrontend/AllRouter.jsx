@@ -44,7 +44,7 @@ const AllRouter = () => {
         </Route>
 
         {/* Showroom Vendor Routes */}
-        <Route path="/showroom-vender" element={<VenderLayOut />}>
+         <Route path="/showroom-vender" element={<VenderLayOut />}>
           <Route index element={<HomePageShowroomVender />} />
           <Route path="add-machine" element={<ShowRoomVendorAddMachines />} />
           <Route

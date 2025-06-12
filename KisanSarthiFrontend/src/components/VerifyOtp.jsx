@@ -14,13 +14,13 @@ const VerifyOtp = () => {
 
   // Map the userType to its respective API path
   const userTypeMap = {
-    "Showroom Vendor": "vendor/showroom-vendor",
-    "Rental Vendor": "vendor/rental-vendor",
+    "Showroom Vendor": "api/user",
+    "Rental Vendor": "api/user",
     Admin: "admin",
     User: "user",
   };
 
-  const baseApiUrl = "http://localhost:3000";
+  const baseApiUrl = "http://localhost:8000";
   const apiPath = userTypeMap[userType];
   const verifyUrl = apiPath ? `${baseApiUrl}/${apiPath}/verify-otp` : null;
 

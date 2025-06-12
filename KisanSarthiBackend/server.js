@@ -1,11 +1,9 @@
 import dotenv from "dotenv";  
 import express from "express";  
 import cors from "cors";
-import sequelize from "./config/db.js";  
 import bodyParser from "body-parser";
-import AdminRouter from './routes/adminRoutes.js';
-import UserRouter from './routes/userRoutes.js';
-import Vendor from './routes/vendorRoutes.js';
+import mainRoute from './routes/index.js';
+
 
 dotenv.config(); 
 const app = express();
@@ -18,9 +16,7 @@ app.use(cors());
 // Serve static files from the uploads folder
 app.use("/uploads", express.static("uploads"));
 
-sequelize.sync()
-  .then(() => console.log("All models synced successfully"))
-  .catch(err => console.log("Sync error: ", err));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,9 +37,9 @@ app.use((req,res,next) => {
   next();
 })
 
-app.use("/admin", AdminRouter);
-app.use("/user", UserRouter); 
-app.use("/vendor", Vendor);
+
+app.use("/api", mainRoute); 
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

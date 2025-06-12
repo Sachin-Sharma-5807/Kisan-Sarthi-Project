@@ -1,8 +1,8 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { Register,LogIn,GetProfile,UpdateProfile,DeleteProfile,VerifyOtp} from '../controllers/rentalVendorController.js';
-import {AddOldMachine,GetOldMachine,UpdateOldMachine,DeleteOldMachine,GetAllOldMachine} from '../controllers/rentalMachineController.js'
-import uploadOldMachine from "../middleware/oldMachineUpload.js";
+import { Register,LogIn,GetProfile,UpdateProfile,DeleteProfile,VerifyOtp} from '../../controllers/rentalVendorController.js';
+import {AddOldMachine,GetOldMachine,UpdateOldMachine,DeleteOldMachine,GetAllOldMachine} from '../../controllers/rentalMachineController.js'
+import uploadOldMachine from "../../middleware/oldMachineUpload.js";
 
 const route=express.Router();
 

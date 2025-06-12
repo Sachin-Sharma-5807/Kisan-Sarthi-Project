@@ -9,8 +9,8 @@ const SellMachine = sequelize.define("SellMachine", {
   CompanyName: { type: DataTypes.STRING, allowNull: false },
   MachinePrice: { type: DataTypes.FLOAT, allowNull: false },
   MachineDescription: { type: DataTypes.TEXT, allowNull: false },
-  MachineImage: { type: DataTypes.STRING, allowNull: false }, // We'll store one image URL or first image
-  MachineImages: { type: DataTypes.JSON, allowNull: false }, // Store multiple image paths as JSON
+ MachineImage: { type: DataTypes.STRING, allowNull: false }, // We'll store one image URL or first image
+  //MachineImages: { type: DataTypes.JSON, allowNull: false }, // Store multiple image paths as JSON
 });
 
 export default SellMachine;

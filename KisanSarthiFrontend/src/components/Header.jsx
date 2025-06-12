@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/header.css";
+import "../styles/Header.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,6 +82,9 @@ const Header = () => {
 
         {/* Login and Sign-Up Buttons */}
         <div className="d-none d-lg-block me-5">
+             <Link to="/Ai-help" className="btn btn-warning ms-1">
+            Help
+          </Link>
           <Link to="/signin" className="btn btn-warning ms-1">
             Sign in
           </Link>

@@ -1,5 +1,6 @@
 import { validationResult } from "express-validator";
-import ShowroomVendor from "../models/ShowroomVendor.js";
+import User from "../models/User.js";
+
 import bcrypt from "bcryptjs";
 import { Gmail } from "../middleware/SendMail.js";
 import { Template } from '../middleware/Template.js';
@@ -21,7 +22,7 @@ export const Register = async (req, res) => {
         const { FullName, Address:VendorAdd, Email, Password, PhoneNumber:VendorContactNumber } = req.body;
 
         // **Check if the user already exists**
-        let existingUser = await ShowroomVendor.findOne({ where: { Email } });
+        let existingUser = await User.findOne({ where: { Email } });
         if (existingUser) {
             return res.status(400).json({ message: "This email is already registered" });
         }
@@ -38,7 +39,7 @@ export const Register = async (req, res) => {
         console.log("Generated OTP:", otpCode);
 
         // **Create new user**
-        let newUser = await ShowroomVendor.create({
+        let newUser = await User.create({
             FullName,
             VendorAdd,
             Email,
@@ -86,7 +87,7 @@ export const VerifyOtp = async (req, res) => {
             return res.status(400).json({ error: "Email and OTP are required" });
         }
 
-        const user = await ShowroomVendor.findOne({ where: { Email } });
+        const user = await User.findOne({ where: { Email } });
 
         if (!user) {
             return res.status(404).json({ error: "User not found" });
@@ -122,7 +123,7 @@ export const LogIn=async(req,res,next)=>{
     try{
         let {email,password}=req.body;
         console.log("data in side backend : ",email,password);
-        let user= await ShowroomVendor.findOne({where:{email}});
+        let user= await User.findOne({where:{email}});
       
         if(user){
             let hashPassword=user.Password;
@@ -153,12 +154,12 @@ export const GetProfile=async(req,res,next)=>{
 
     try {
         let id=req.params.id;
-        const user = await ShowroomVendor.findByPk(id);
+        const user = await User.findByPk(id);
         if (!user) {
             return res.status(404).json({ error: "User ID not found" });
         }
         else{
-        const GetProfile=await ShowroomVendor.findOne();
+        const GetProfile=await User.findOne();
         return res.status(200).json({GetProfile});
     }
     } catch (err) {
@@ -177,7 +178,7 @@ export const UpdateProfile=async(req,res,next)=>{
         let id=req.params.id;
         const {FullName,VendorAdd,email,password,VendorContactNumber}=req.body;
 
-        const user = await ShowroomVendor.findByPk(id);
+        const user = await User.findByPk(id);
         if (!user) {
             return res.status(404).json({ error: "User ID not found" });
         }
@@ -198,7 +199,7 @@ export const UpdateProfile=async(req,res,next)=>{
         }
 
       
-        const result = await ShowroomVendor.update(updatedData, { where: { VendorID:id } });
+        const result = await User.update(updatedData, { where: { VendorID:id } });
 
         return result[0]
             ? res.status(200).json({ message: "Updated successfully" })
@@ -218,12 +219,12 @@ export const UpdateProfile=async(req,res,next)=>{
 export const DeleteProfile =async(req,res,next)=>{
 
     let id=req.params.id;
-    const user = await ShowroomVendor.findByPk(id);
+    const user = await User.findByPk(id);
     if (!user) {
         return res.status(404).json({ error: "User ID not found" });
     }
 
-    await ShowroomVendor.destroy({where:{VendorID : id}})
+    await User.destroy({where:{VendorID : id}})
     .then(result=>{
         return res.status(201).json({message :"User Deleted successfully",result});
     })

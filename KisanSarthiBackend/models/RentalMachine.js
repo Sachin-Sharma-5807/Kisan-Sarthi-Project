@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/db.js"; // Import your database connection
+import sequelize from "../config/db.js";// Import your database connection
 
 const RentalMachine = sequelize.define("RentalMachine", {
   RentalMachineID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },

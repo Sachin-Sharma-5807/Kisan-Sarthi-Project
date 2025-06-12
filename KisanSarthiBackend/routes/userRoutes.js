@@ -1,10 +1,12 @@
 import express from "express";
 import { body } from "express-validator";
-import { Register,LogIn,GetUserById,UpdateUser,DeleteUser,verifyOtp,GetAllOldMachines,GetAllNewMachines} from "../controllers/userController.js";
+import { Register,LogIn,GetUserById,UpdateUser,DeleteUser,verifyOtp,
+        GetAllOldMachines,GetAllNewMachines} from "../controllers/userController.js";
 import {PlaceOrder,GetOrders} from '../controllers/orderController.js';
 const route=express.Router();
 
 route.post("/register",Register);
+
   
 
 route.post('/verify-otp',verifyOtp);
@@ -29,3 +31,4 @@ route.post(
 
 route.get("/get-orders/:userId", GetOrders);
  export default  route;
+
